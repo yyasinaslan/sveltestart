@@ -1,20 +1,17 @@
 <script lang="ts">
-	import Nav from '$lib/components/nav.svelte';
-	import User from '$lib/components/user.svelte';
 	import '../lib/assets/bootstrap.scss';
-	import type { LayoutData } from './$types';
+	import Nav from '$lib/components/nav.svelte';
 
-	export let data: LayoutData;
+	export const prerender = false;
 </script>
 
 <Nav
 	items={[
 		{ route: '/', label: 'Home' },
 		{ route: '/auth', label: 'Auth' },
-		{ route: '/user', label: 'User' }
+		{ route: '/user', label: 'User' },
+		{ route: '/todos', label: 'Todos' }
 	]}
 />
-
-<User username="yasin" />
 
 <slot />
