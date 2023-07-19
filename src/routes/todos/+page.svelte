@@ -7,27 +7,27 @@
 	};
 </script>
 
-<div class='mb-3'>
-	<label for='todoContent' class='form-label'>Content</label>
+<div class='form-control mb-3'>
+	<label for='todoContent' class='label'>Content</label>
 	<input id='todoContent'
 				 type='text'
 				 bind:value={currentTodo.content}
-				 class='form-control'
+				 class='input input-primary'
 	/>
 </div>
 
-<div class='mb-3'>
-	<label for='todoCompleted' class='form-label'>Completed</label>
-	<input id='todoCompleted'
-				 type='checkbox'
-				 bind:value={currentTodo.completed}
-				 class='form-check'
-	/>
-</div>
+<!--<div class='mb-3'>-->
+<!--	<label for='todoCompleted' class='form-label'>Completed</label>-->
+<!--	<input id='todoCompleted'-->
+<!--				 type='checkbox'-->
+<!--				 bind:value={currentTodo.completed}-->
+<!--				 class='form-check'-->
+<!--	/>-->
+<!--</div>-->
 
 <button
 	type='button'
-	class='btn btn-success'
+	class='btn btn-primary'
 	on:click={() => {
 		todos.addTodo(currentTodo);
 		currentTodo = {
@@ -39,23 +39,31 @@
 >
 
 <div class='p-3'>
-	<table class='table table-bordered'>
+	<table class='table table-sm table-zebra'>
+		<tbody>
 		{#each $todos as todo, i}
 			<tr>
-				<td><input style='width: 20px' type='checkbox' class='form-check m-0' bind:checked={todo.completed}></td>
 				<td>
-					<div class:text-decoration-line-through={todo.completed}>{todo.content}</div>
+					<div class='form-control'>
+						<input type='checkbox' class='checkbox' bind:checked={todo.completed}>
+					</div>
 				</td>
 				<td>
-					<button
-						type='button'
-						class='btn btn-sm btn-danger'
-						on:click={() => {
+					<div class:line-through={todo.completed}>{todo.content}</div>
+				</td>
+				<td>
+					<div>
+						<button
+							type='button'
+							class='btn btn-sm btn-error'
+							on:click={() => {
 				todos.removeTodo(i);
 			}}>Delete
-					</button>
+						</button>
+					</div>
 				</td>
 			</tr>
 		{/each}
+		</tbody>
 	</table>
 </div>
