@@ -1,20 +1,21 @@
-<script lang="ts">
+<script lang='ts'>
 	import { page } from '$app/stores';
 
 	export let items: Array<{ route: string; label: string }> = [];
 </script>
 
-<div class="p-1 bg-secondary m-2 rounded text-white">
+<div class='p-3 bg-base-300'>
 	{$page.url.pathname}
 </div>
-<ul class="nav nav-pills">
-	{#each items as { route, label }, i}
-		<li class="nav-item">
+<div class='p-3'>
+	<div class='navbar bg-accent-content/20 rounded-2xl'>
+		{#each items as { route, label }, i}
 			<a
-				class="nav-link"
+				class='btn btn-ghost'
 				class:active={$page.url.pathname == route}
 				href={route}>{label}</a
 			>
-		</li>
-	{/each}
-</ul>
+		{/each}
+	</div>
+
+</div>
